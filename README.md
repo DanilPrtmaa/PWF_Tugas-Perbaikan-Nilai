@@ -12,7 +12,7 @@
 
 ## 📌 Penjelasan Penerapan Fitur Laravel
 
-Website ini telah menerapkan seluruh fitur yang diminta dalam tugas:
+Pada Website ini menerapkan fitur:
 
 ✔ Migration
 ✔ Model Eloquent
