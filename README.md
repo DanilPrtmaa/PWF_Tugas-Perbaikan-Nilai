@@ -282,13 +282,19 @@ Tampilan menambahkan pekanggan baru
 <img width="1920" height="1302" alt="screencapture-127-0-0-1-8000-customers-create-2025-11-20-23_01_52" src="https://github.com/user-attachments/assets/858b6948-4d41-46af-859c-445872ed54ab" />
 Tampilan edit pelanggan
 <img width="1920" height="980" alt="screencapture-127-0-0-1-8000-customers-5-edit-2025-11-20-23_03_08" src="https://github.com/user-attachments/assets/4282a937-d4b9-4349-8625-7d848164852f" />
-
+Tampilan Layanan Laundry
 <img width="1920" height="982" alt="screencapture-127-0-0-1-8000-services-2025-11-20-23_00_43" src="https://github.com/user-attachments/assets/da7d8dd5-d44e-40be-8689-c2554d119049" />
+Tambah Layanan baru
 <img width="1920" height="1415" alt="screencapture-127-0-0-1-8000-services-create-2025-11-20-23_02_03" src="https://github.com/user-attachments/assets/1ae19ac3-45f3-48a5-a858-b7c445e4f3e6" />
+Edit Layanan
 <img width="1920" height="1270" alt="screencapture-127-0-0-1-8000-services-3-edit-2025-11-20-23_03_28" src="https://github.com/user-attachments/assets/c04d0e27-7178-46c1-b746-99dca7bd9d0b" />
+Tampilan Order
 <img width="1920" height="1186" alt="screencapture-127-0-0-1-8000-orders-2025-11-20-23_00_56" src="https://github.com/user-attachments/assets/193ee490-4f16-4371-9cc2-469877f607a6" />
+Detail Order
 <img width="1920" height="1539" alt="screencapture-127-0-0-1-8000-orders-4-2025-11-20-23_03_52" src="https://github.com/user-attachments/assets/60cc1937-a174-4070-8abf-1f8707383f12" />
+Invoice
 <img width="1920" height="1304" alt="screencapture-127-0-0-1-8000-orders-4-invoice-2025-11-20-23_04_08" src="https://github.com/user-attachments/assets/9d1a6bd0-c07e-432d-b037-2db953727549" />
+Cetak Invoice
 <img width="1310" height="868" alt="Screenshot 2025-11-20 230532" src="https://github.com/user-attachments/assets/f4561719-acf3-434d-bfe5-998822d359f9" />
 
 ---
