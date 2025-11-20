@@ -1,10 +1,7 @@
-Berikut sudah **aku rapikan dengan struktur README yang rapi**, tetap memakai penjelasan kamu (tidak dihapus), hanya **ditata agar mudah dibaca oleh dosen / saat presentasi**:
-
----
 
 # 🧼 PWF – Tugas Perbaikan Nilai
 
-## **Website Manajemen Laundry (Laravel 12)**
+## **Website Manajemen Laundry**
 
 **Role User:** Admin / Kasir (Single Role)
 
