@@ -1,33 +1,34 @@
-Berikut sudah **aku rapikan agar cocok untuk README GitHub dan mudah dibaca dosen/tutor**.
-Struktur sudah memakai **heading yang jelas, bullet point, code block, dan penjelasan ringkas** supaya terlihat profesional dan langsung menonjolkan penerapan fitur Laravel.
+Berikut sudah **aku rapikan dengan struktur README yang rapi**, tetap memakai penjelasan kamu (tidak dihapus), hanya **ditata agar mudah dibaca oleh dosen / saat presentasi**:
 
 ---
 
-# 🧼 **PWF – Website Manajemen Laundry**
+# 🧼 PWF – Tugas Perbaikan Nilai
 
-**Tugas Perbaikan Nilai – Praktikum Web Framework (Laravel 12)**
-**Role Pengguna:** Admin / Kasir (Single Role)
+## **Website Manajemen Laundry (Laravel 12)**
 
----
-
-## 📌 **Penjelasan Penerapan Fitur Laravel**
-
-Website ini menggunakan 4 komponen utama Laravel:
-
-1. **Migration** – Membuat struktur database
-2. **Model (Eloquent ORM)** – Interaksi dengan database
-3. **View (Blade Template)** – Tampilan halaman web
-4. **Routing & Controller** – Logika & proses CRUD
-
-Semua fitur ini sudah diterapkan sesuai ketentuan tugas.
+**Role User:** Admin / Kasir (Single Role)
 
 ---
 
-## 1️⃣ **Migration**
+## 📌 Penjelasan Penerapan Fitur Laravel
 
-Terdapat **4 migration** untuk membangun struktur database:
+Website ini telah menerapkan seluruh fitur yang diminta dalam tugas:
 
-### 🗂 `create_customers_table.php`
+✔ Migration
+✔ Model Eloquent
+✔ View (Blade Template)
+✔ Routes & Controller
+✔ Blade If, Foreach, CSRF & Extends Layout
+
+---
+
+## 1️⃣ Migration
+
+Website ini menggunakan **4 migration** untuk membentuk struktur database utama:
+
+---
+
+### 📄 `create_customers_table.php`
 
 ```php
 Schema::create('customers', function (Blueprint $table) {
@@ -40,7 +41,7 @@ Schema::create('customers', function (Blueprint $table) {
 });
 ```
 
-### 🗂 `create_services_table.php`
+### 📄 `create_services_table.php`
 
 ```php
 Schema::create('services', function (Blueprint $table) {
@@ -54,7 +55,7 @@ Schema::create('services', function (Blueprint $table) {
 });
 ```
 
-### 🗂 `create_orders_table.php`
+### 📄 `create_orders_table.php`
 
 ```php
 Schema::create('orders', function (Blueprint $table) {
@@ -70,7 +71,7 @@ Schema::create('orders', function (Blueprint $table) {
 });
 ```
 
-### 🗂 `create_order_items_table.php`
+### 📄 `create_order_items_table.php`
 
 ```php
 Schema::create('order_items', function (Blueprint $table) {
@@ -87,7 +88,7 @@ Schema::create('order_items', function (Blueprint $table) {
 
 ---
 
-## 2️⃣ **Model (Eloquent ORM)**
+## 2️⃣ Model (Eloquent ORM)
 
 ### 📁 `Customer.php`
 
@@ -173,26 +174,28 @@ class OrderItem extends Model
 }
 ```
 
+✔ **Menerapkan:**
+
+* Mass Assignment (`$fillable`)
+* Relasi (`hasMany`, `belongsTo`)
+* Auto generate nomor transaksi & subtotal (Model Event)
+
 ---
 
-## 3️⃣ **View (Blade Template)**
+## 3️⃣ View (Blade Template)
 
-### 🧩 Route Langsung ke View (Dashboard)
+### 🔹 Route Langsung ke View
 
 ```php
 Route::get('/', function () {
     $totalCustomers = Customer::count();
     $totalOrders = Order::count();
-    $totalServices = Service::count();
-    $pendingOrders = Order::where('status', 'pending')->count();
 
-    return view('home', compact(
-        'totalCustomers', 'totalOrders', 'totalServices', 'pendingOrders'
-    ));
+    return view('home', compact('totalCustomers', 'totalOrders'));
 })->name('home');
 ```
 
-### 🧩 View melalui Controller (CRUD)
+### 🔹 Route melalui Controller (CRUD)
 
 ```php
 Route::resource('customers', CustomerController::class);
@@ -200,30 +203,28 @@ Route::resource('services', ServiceController::class);
 Route::resource('orders', OrderController::class);
 ```
 
-### 🧩 Blade Extends Layout
+### 🔹 Blade Extends Layout
 
 ```php
 @extends('layouts.app')
-
 @section('title', 'Data Pelanggan')
-
 @section('content')
     <!-- isi konten -->
 @endsection
 ```
 
-### 🧩 Blade `@foreach`
+### 🔹 Blade Foreach
 
 ```php
 @foreach($customers as $customer)
-    <tr>
-        <td>{{ $customer->name }}</td>
-        <td>{{ $customer->phone }}</td>
-    </tr>
+<tr>
+    <td>{{ $customer->name }}</td>
+    <td>{{ $customer->phone }}</td>
+</tr>
 @endforeach
 ```
 
-### 🧩 Blade `@if`
+### 🔹 Blade If
 
 ```php
 @if($customers->isEmpty())
@@ -231,7 +232,7 @@ Route::resource('orders', OrderController::class);
 @endif
 ```
 
-### 🧩 Blade `@csrf` & Method PUT/DELETE
+### 🔹 CSRF & Method PUT/DELETE
 
 ```php
 <form action="{{ route('customers.update', $customer) }}" method="POST">
@@ -247,47 +248,50 @@ Route::resource('orders', OrderController::class);
 
 ---
 
-## 4️⃣ **Routing Tambahan**
+## 4️⃣ Routing Tambahan
 
 ```php
-// Update status order
 Route::post('/orders/{order}/update-status', [OrderController::class, 'updateStatus'])
     ->name('orders.update-status');
 
-// Cetak invoice
 Route::get('/orders/{order}/invoice', [OrderController::class, 'invoice'])
     ->name('orders.invoice');
 ```
 
 ---
 
-## ✔ **Kesimpulan Penerapan Fitur**
+## ✔ Kesimpulan Penerapan
 
-| Fitur Laravel      | Status    |
-| ------------------ | --------- |
-| Migration          | ✔ 4 Tabel |
-| Model + Relasi ORM | ✔         |
-| CRUD Controller    | ✔         |
-| Blade Template     | ✔         |
-| CSRF Protection    | ✔         |
-| Loop (@foreach)    | ✔         |
-| Logic (@if)        | ✔         |
-| Route + Resource   | ✔         |
-
----
-
-## 📸 **Tampilan Website**
-
-> Semua screenshot sudah diunggah ke repository:
-> Dashboard, CRUD Customer, Services, Orders, Detail Order & Invoice.
-
-*(Screenshot akan otomatis tampil di GitHub)*
-![Dashboard](https://github.com/user-attachments/assets/0f17a182-b708-4a5d-a465-705ccb446547)
+| Fitur Laravel        | Status           |
+| -------------------- | ---------------- |
+| Migration            | ✔ 4 Tabel Dibuat |
+| Model + Relasi       | ✔ Lengkap        |
+| CRUD Controller      | ✔                |
+| Blade Extends Layout | ✔                |
+| CSRF                 | ✔                |
+| Blade If / Foreach   | ✔                |
+| Resource Route       | ✔                |
 
 ---
 
-Kalau mau **versi PDF laporan**, atau **BAB I–IV siap print**, tinggal bilang:
+## 📸 Tampilan Website
 
-> minta versi laporan / PDF
+Semua screenshot fitur pada website:
 
-Siap bantu sampai ACC 💯🔥
+<img width="1920" height="1521" alt="screencapture-127-0-0-1-8000-2025-11-20-23_00_02" src="https://github.com/user-attachments/assets/0f17a182-b708-4a5d-a465-705ccb446547" />
+<img width="1920" height="1255" alt="screencapture-127-0-0-1-8000-customers-2025-11-20-23_00_18" src="https://github.com/user-attachments/assets/00011419-66c1-47e8-bcee-9c9b9da2bb5e" />
+<img width="1920" height="1302" alt="screencapture-127-0-0-1-8000-customers-create-2025-11-20-23_01_52" src="https://github.com/user-attachments/assets/858b6948-4d41-46af-859c-445872ed54ab" />
+<img width="1920" height="980" alt="screencapture-127-0-0-1-8000-customers-5-edit-2025-11-20-23_03_08" src="https://github.com/user-attachments/assets/4282a937-d4b9-4349-8625-7d848164852f" />
+<img width="1920" height="982" alt="screencapture-127-0-0-1-8000-services-2025-11-20-23_00_43" src="https://github.com/user-attachments/assets/da7d8dd5-d44e-40be-8689-c2554d119049" />
+<img width="1920" height="1415" alt="screencapture-127-0-0-1-8000-services-create-2025-11-20-23_02_03" src="https://github.com/user-attachments/assets/1ae19ac3-45f3-48a5-a858-b7c445e4f3e6" />
+<img width="1920" height="1270" alt="screencapture-127-0-0-1-8000-services-3-edit-2025-11-20-23_03_28" src="https://github.com/user-attachments/assets/c04d0e27-7178-46c1-b746-99dca7bd9d0b" />
+<img width="1920" height="1186" alt="screencapture-127-0-0-1-8000-orders-2025-11-20-23_00_56" src="https://github.com/user-attachments/assets/193ee490-4f16-4371-9cc2-469877f607a6" />
+<img width="1920" height="1539" alt="screencapture-127-0-0-1-8000-orders-4-2025-11-20-23_03_52" src="https://github.com/user-attachments/assets/60cc1937-a174-4070-8abf-1f8707383f12" />
+<img width="1920" height="1304" alt="screencapture-127-0-0-1-8000-orders-4-invoice-2025-11-20-23_04_08" src="https://github.com/user-attachments/assets/9d1a6bd0-c07e-432d-b037-2db953727549" />
+<img width="1310" height="868" alt="Screenshot 2025-11-20 230532" src="https://github.com/user-attachments/assets/f4561719-acf3-434d-bfe5-998822d359f9" />
+
+---
+
+
+
+
